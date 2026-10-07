@@ -1,6 +1,9 @@
 class Solution {
     public int[][] dp;
     public int solve(int amount,int[]coins,int index,int[][]dp){
+        if(amount==0){
+            return 1;
+        }
         if(index==0){
             if(amount%coins[0]==0){
                 return 1;
