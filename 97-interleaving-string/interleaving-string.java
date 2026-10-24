@@ -1,13 +1,15 @@
 class Solution {
     public boolean isInterleave(String s1, String s2, String s3) {
-        if(s1.length()+s2.length()!=s3.length()){
+        int n=s1.length();
+        int m=s2.length();
+        if((n+m)!=s3.length()){
             return false;
 
         }
-        boolean[][] dp=new boolean[s1.length()+1][s2.length()+1];
+        boolean[][] dp=new boolean[n+1][m+1];
         dp[0][0]=true;
-        for(int i=0;i<=s1.length();i++){
-            for(int j=0;j<=s2.length();j++){
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=m;j++){
                 if(i>0&&s1.charAt(i-1)==s3.charAt(i+j-1)){
                     dp[i][j]=dp[i][j]||dp[i-1][j];
             }
@@ -16,6 +18,6 @@ class Solution {
             }
         }
     }
-    return dp[s1.length()][s2.length()];
+    return dp[n][m];
 }
 }
